@@ -4332,6 +4332,50 @@ dependencies = [
 ]
 
 [[package]]
+name = "orml-nft"
+version = "0.4.1-dev"
+source = "git+https://github.com/chiba-studio/open-runtime-module-library?branch=master#b4358fb57d7a063b26b44b881ed1f0309ca33545"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "serde",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "orml-traits"
+version = "0.4.1-dev"
+source = "git+https://github.com/chiba-studio/open-runtime-module-library?branch=master#b4358fb57d7a063b26b44b881ed1f0309ca33545"
+dependencies = [
+ "frame-support",
+ "funty",
+ "impl-trait-for-tuples",
+ "num-traits",
+ "orml-utilities",
+ "parity-scale-codec",
+ "serde",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "orml-utilities"
+version = "0.4.1-dev"
+source = "git+https://github.com/chiba-studio/open-runtime-module-library?branch=master#b4358fb57d7a063b26b44b881ed1f0309ca33545"
+dependencies = [
+ "frame-support",
+ "funty",
+ "parity-scale-codec",
+ "serde",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "output_vt100"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4354,6 +4398,21 @@ name = "owo-colors"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13370dae44474229701bb69b90b4f4dca6404cb0357a2d50d635f1171dc3aa7b"
+
+[[package]]
+name = "pallet-atomic-swap"
+version = "3.0.0"
+source = "git+https://github.com/paritytech/substrate?branch=master#70f1b61a135197d811a4a3b88a7c87cfdcfcf73f"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
 
 [[package]]
 name = "pallet-authority-discovery"
@@ -4451,6 +4510,25 @@ dependencies = [
  "pallet-treasury",
  "parity-scale-codec",
  "serde",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-chiba"
+version = "0.4.0-dev"
+source = "git+https://github.com/chiba-studio/chiba-pallet?branch=master#a37ead9b41d992c201364d12570a7015f87b31f5"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "orml-nft",
+ "orml-traits",
+ "pallet-atomic-swap",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-io",
  "sp-runtime",
  "sp-std",
 ]
@@ -11106,11 +11184,14 @@ dependencies = [
  "hex-literal",
  "libsecp256k1",
  "log",
+ "orml-nft",
+ "pallet-atomic-swap",
  "pallet-authority-discovery",
  "pallet-authorship",
  "pallet-babe",
  "pallet-balances",
  "pallet-beefy",
+ "pallet-chiba",
  "pallet-collective",
  "pallet-democracy",
  "pallet-election-provider-multi-phase",

@@ -748,6 +748,28 @@ impl pallet_proxy::Config for Runtime {
 	type AnnouncementDepositFactor = AnnouncementDepositFactor;
 }
 
+parameter_types! {
+	pub const ProofLimit: u32 = 10_000;
+}
+
+impl pallet_atomic_swap::Config for Runtime {
+	type Event = Event;
+	type SwapAction = pallet_chiba::ChibaSwapAction<Runtime>;
+	type ProofLimit = ProofLimit;
+}
+
+impl orml_nft::Config for Runtime {
+	type ClassId = u64;
+	type TokenId = u64;
+	type ClassData = pallet_chiba::ClassData;
+	type TokenData = pallet_chiba::TokenData;
+}
+
+impl pallet_chiba::Config for Runtime {
+	type Event = Event;
+	type Currency = Balances;
+}
+
 construct_runtime! {
 	pub enum Runtime where
 		Block = Block,
@@ -807,6 +829,11 @@ construct_runtime! {
 		Mmr: pallet_mmr::{Pallet, Call, Storage} = 28,
 		Beefy: pallet_beefy::{Pallet, Config<T>, Storage} = 29,
 		MmrLeaf: mmr_common::{Pallet, Storage} = 30,
+		
+		// Chiba Studio Pallets
+		AtomicSwap: pallet_atomic_swap::{Pallet, Call, Storage, Event<T>} = 31,
+		OrmlNft: orml_nft::{Pallet, Call, Storage} = 32,
+		ChibaStudio: pallet_chiba::{Pallet, Call, Storage, Event<T>} = 33,
 	}
 }
 
